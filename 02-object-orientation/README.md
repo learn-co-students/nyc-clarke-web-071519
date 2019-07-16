@@ -33,14 +33,14 @@ clown1.class
   * A class is like a blueprint of a thing
   * An *instance* is the thing
 
-### Building out our object (hold state)?
-  * #initialize determines what happens when we make a new instance of a class.
-  * instance variables allow our instances to have state (remember some data)
+### Building out our objects:
+  * `#initialize` determines what happens when we make a new instance of a class.
+  * instance variables allow our instances to have state *(remember some data)*
   * creating getter methods will allow us to see instance variables
-    * attr_reader is just syntatic sugar for a simple getter method.
+    * `attr_reader` is just syntatic sugar for a simple getter method.
   * creating setter methods will allow us to set values into instance variables.
-    * attr_writer is just syntatic sugar for a simple writer method.
-    * attr_accessor is just syntatic sugar for when you need both reader and writer.
+    * `attr_writer` is just syntatic sugar for a simple writer method.
+    * `attr_accessor` is just syntatic sugar for when you need both reader and writer.
   
   * we can create instance methods by just defining methods within a class.
     * instance methods can reference other instance methods.
