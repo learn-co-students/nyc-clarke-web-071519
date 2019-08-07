@@ -1,0 +1,9 @@
+<ul class="cereal-list">
+<% @cereals.each do |cereal| %>
+  <li>
+    <a href="/cereals/<%= "#{cereal.id}" %>"><%= cereal.name %> : <%= cereal.rating %></a>
+  </li>
+<% end %>
+</ul>
+
+<a href="/cereals/new">Add New Cereal</a>

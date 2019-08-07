@@ -1,0 +1,11 @@
+<h1>Show page for Cereal</h1>
+<div class="cereal-info">
+  <p>name: <%= @cereal.name %></p>
+  <p>rating: <%= @cereal.rating %> / 10</p>
+</div>
+<a href="/cereals/<%= @cereal.id %>/edit">Edit this Cereal</a>
+
+<form action="/cereals/<%= @cereal.id %>" method="POST">
+  <input type="hidden" name="_method" value="DELETE">
+  <button type="submit">Delete this Cereal</button>
+</form>
