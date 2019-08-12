@@ -20,11 +20,11 @@ You can make forms several different ways.
   1) Hard-code the form (type the HTML yourself).
   2) use one of the form helpers.
 
-#### form_tag
+### form_tag
 When you are creating a form **without** an instance of the resource you are trying to create. Strikes a good balance between convention and configuration. For example, you may be creating a form for a non-restful action.
-#### form_for
+### form_for
 When you are creating a form **with** an instance of the resource you are trying to create. If your request is RESTful, form_for will help you write concise and DRY view pages.
-#### form_with
+### form_with
 Allows you to choose between `form_for` or `form_tag` based on the argument you pass into it.
 * `<%= form_with url: '/the_url' %>` usage similar to form_tag.
 * `<%= form_with model: @resource %>`: usage similar to form_for.
