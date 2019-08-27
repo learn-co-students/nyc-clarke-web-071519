@@ -1,0 +1,1 @@
+let otherJSlibrary = "hello from other js library;"

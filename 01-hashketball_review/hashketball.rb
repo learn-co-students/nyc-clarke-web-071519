@@ -1,5 +1,32 @@
 require 'pry'
 
+# array_of_numbers = [1,2,3,4,5,6,4]
+
+# # map
+# new_array_of_numbers = []
+# array_of_numbers.each do |num| 
+#   new_array_of_numbers << num * 3
+# end
+
+# new_array_of_numbers_from_map = array_of_numbers.map do |num|
+#   num * 3
+#   "poop"
+# end
+
+# found_number = [false, 1, 2, 3, 4].find do |num|
+#   num == "unicorn"
+# end
+
+# found_numbers = [1,2,3,4,5,6,7,8,9].select do |num|
+#   false
+# end
+
+fruit_basket = { apples: 5, bananas: 3, peaches: 6 }
+
+fruit_basket.each do |key, value|
+
+end
+
 def game_hash
   {
     home: {
@@ -120,44 +147,39 @@ def game_hash
 end
 
 def all_players
-  game_hash[:away][:players].concat(game_hash[:home][:players])
+  game_hash[:home][:players].concat(game_hash[:away][:players])
 end
 
-# take in a player name (as a string) and 
-# return the number of points scored for that player.
 
-def number_points_scored(player_name)
-  # for all the players in the game_hash
-  # compare them 1 by 1 until player_name matches
-  # once we have a match, return that player's points
-  # game_hash[:home][:players].each do |player_hash|
-  #   if player_hash[:player_name] == player_name
-  #     return player_hash[:points]
+
+def num_points_scored(player_name)
+  # game_hash.each do |key, value|
+  #   value[:players].each do |player_name_key, stats|
+  #     if player_name_key == player_name
+  #       return stats[:points]
+  #     end
+  #   end
+  # end
+  # all_players.each do |player|
+  #   if player[:player_name] == player_name
+  #     return player[:points]
   #   end
   # end
 
-  # game_hash[:away][:players].each do |player_hash|
-  #   if player_hash[:player_name] == player_name
-  #     return player_hash[:points]
-  #   end
-  # end
 
   all_players.find do |player_hash|
     player_hash[:player_name] == player_name
   end[:points]
 end
 
-# take in an integer and return an array of all players who scored over that amount of points
-def all_players_above_certain_points(points_scored)
-  # found_players = []
-  # all_players.each do |player_hash|
-  #   if player_hash[:points] >= points_scored
-  #     found_players << player_hash
-  #   end
-  # end
-  # found_players
-
-  all_players.select { |player_hash| player_hash[:points] >= points_scored }
+def shoe_size(player_names)
+  game_hash.each do |key, value|
+    value[:players].each do |player_name_key, stats|
+      if player_name_key == player_name
+        return stats[:shoe]
+      end
+    end
+  end
 end
 
 binding.pry
