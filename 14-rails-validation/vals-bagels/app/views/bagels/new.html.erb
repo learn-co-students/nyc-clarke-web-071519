@@ -1,0 +1,30 @@
+<% if flash[:errors] %>
+  <% flash[:errors].each do |error_message| %>
+    <p class="error"> <%= error_message %>  </p>
+  <% end %>
+<% end %>
+
+
+<%= form_with model: @bagel do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name, class: "uk-input" %>
+  <br>
+
+  <%= f.label :flavor %>
+  <%= f.text_field :flavor, class: "uk-input" %>
+  <br>
+
+  <%= f.label :price %>
+  <%= f.text_field :price, class: "uk-input" %>
+  <br>
+
+  <%= f.label :toasted %>
+  <%= f.check_box :toasted, class: "uk-checkbox" %>
+  <br>
+
+  <%= f.label :scooped %>
+  <%= f.check_box :scooped, class: "uk-checkbox" %>
+  <br>
+
+  <%= f.submit class: "uk-button uk-button-primary" %>
+<% end %>

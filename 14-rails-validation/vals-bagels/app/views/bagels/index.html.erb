@@ -1,0 +1,10 @@
+<h1>Here is our Selection:</h1>
+<% @bagels.each do |bagel| %>
+<div class="bagel-card">
+  <p><%= bagel.name %></p>
+  <p><%= bagel.flavor %></p>
+  <p><%= bagel.price %></p>
+  <p><%= bagel.toasted %></p>
+  <p><%= bagel.scooped %></p>
+</div>
+<% end %>

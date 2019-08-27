@@ -22,7 +22,7 @@
 
 ### Enumerable Methods in ruby
 * each
-* map
+* map - transforming an array
 * find
 * select
 
