@@ -1,0 +1,14 @@
+{
+  "name": "18-js-ajax",
+  "version": "1.0.0",
+  "description": "* Use [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch) to get data from servers (API's). * Use [json-server](https://github.com/typicode/json-server) to set up a dummy server. * Learn the difference between arrow functions and function expressions. ### Nice to knows: * What is node? * asynchronous vs synchronous JavaScript code.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "json-server": "^0.15.0"
+  }
+}
