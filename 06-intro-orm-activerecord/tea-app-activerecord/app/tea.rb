@@ -1,7 +1,7 @@
 class Tea < ActiveRecord::Base
 
   def poop
-    "POOP!"
+    "POOP"
   end
-  
 end
+

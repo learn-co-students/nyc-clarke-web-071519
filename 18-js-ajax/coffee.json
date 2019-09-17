@@ -1,9 +1,24 @@
 {
   "orders": [
     {
-      "id": 4,
-      "name": "Coffee Black",
-      "price": 5
+      "name": "Cafe Latte",
+      "price": "20",
+      "id": 1
+    },
+    {
+      "name": "Americano",
+      "price": "15",
+      "id": 2
+    },
+    {
+      "name": "Espresso",
+      "price": "25",
+      "id": 3
+    },
+    {
+      "name": "Iced Frappe",
+      "price": "50",
+      "id": 4
     }
   ]
 }

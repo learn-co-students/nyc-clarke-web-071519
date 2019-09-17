@@ -7,16 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     .then(response => response.json())
     .then(ordersArray => ordersArray.forEach(coffeeOrder => {
 
-      let newCoffeOrderDiv = document.createElement('div');
-      newCoffeOrderDiv.dataset.id = coffeeOrder.id;
-
-      
-      newCoffeOrderDiv.innerHTML = `
-        <p>Order #${coffeeOrder.id}</p>
-        <p>${coffeeOrder.name}</p>
-        <p>$${coffeeOrder.price}.00</p>
-        <button class="fulfill-button">Fulfill Order</button>
-      `
+      let newCoffeOrderDiv = createCoffeeOrderDiv(coffeeOrder);
 
       let coffeeOrdersDiv = document.querySelector('ul.coffee-orders');
       coffeeOrdersDiv.appendChild(newCoffeOrderDiv);
@@ -24,8 +15,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
   // look for the div with class of coffee-kiosk
-
-  let deliCounter = 1;
   let coffeeKiosk = document.querySelector('div.coffee-kiosk');
 
 
@@ -34,13 +23,25 @@ document.addEventListener('DOMContentLoaded', function() {
     if (event.target.className === "coffee-button") {
       // create the div that we will append
       // consider abstracting the creation of a div node into it's own function
-      let newCoffeOrder = document.createElement('div');
-      newCoffeOrder.innerHTML = `<p>Order #${deliCounter}</p> <p>${event.target.innerText}</p><p>$${event.target.dataset.price}.00</p><button class="fulfill-button">Fulfill Order</button>`
+      // use fetch to send a post request to create a new order on the backend
+      fetch('http://localhost:3000/orders', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name: event.target.innerText,
+          price: event.target.dataset.price
+        })
+      })
+        .then(response => response.json())
+        .then(coffeeOrder => {
+          let newCoffeOrder = createCoffeeOrderDiv(coffeeOrder);
 
-      // look for the list that we want to append
-      let orderList = document.querySelector('ul.coffee-orders');
-      orderList.appendChild(newCoffeOrder);
-      deliCounter++;
+          let orderList = document.querySelector('ul.coffee-orders');
+          orderList.appendChild(newCoffeOrder);
+        })
     }
   })
 
@@ -51,12 +52,22 @@ document.addEventListener('DOMContentLoaded', function() {
     if (event.target.className === "fulfill-button") {
       const orderId = event.target.parentNode.dataset.id
 
-      fetch(`http://localhost:3000/orders/${orderId}`, {
-        method: 'DELETE'
-      })
-      event.target.parentNode.remove();
+      fetch(`http://localhost:3000/orders/${orderId}`, { method: 'DELETE' })
+      event.target.parentNode.remove()
 
     }
   })
 
 })
+
+const createCoffeeOrderDiv = order => {
+  let newCoffeOrder = document.createElement('div');
+  newCoffeOrder.dataset.id = order.id;
+  newCoffeOrder.innerHTML = `
+    <p>Order #${order.id}</p>
+    <p>${order.name}</p>
+    <p>$${order.price}.00</p>
+    <button class="fulfill-button">Fulfill Order</button>
+  `
+  return newCoffeOrder
+}
