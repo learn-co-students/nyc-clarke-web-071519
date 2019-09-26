@@ -11,7 +11,7 @@ const NavBar = props => (
         <NavLink to="/signup">Sign Up</NavLink>
       </li>
       <li>
-        <NavLink to="/snacks">Snacks</NavLink>
+        <NavLink to="/profile">Profile</NavLink>
       </li>
    </ul> 
   </nav>
