@@ -1,11 +1,19 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 
-const NavBar = props => (
+import withAuth from './withAuth'
+
+const NavBar = props => {
+  console.log(props)
+  return (
   <nav>
    <ul className="links">
      <li>
-       <NavLink to="/login">Login</NavLink>
+       {
+         props.loggedIn ? 
+          <Link to="/logout">Logout</Link> : 
+          <NavLink to="/login">Login</NavLink> 
+        }
      </li>
       <li>
         <NavLink to="/signup">Sign Up</NavLink>
@@ -15,6 +23,6 @@ const NavBar = props => (
       </li>
    </ul> 
   </nav>
-)
+)}
 
-export default NavBar;
+export default withAuth(NavBar);

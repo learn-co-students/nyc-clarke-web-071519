@@ -24,20 +24,19 @@ class App extends React.Component {
     })
   }
 
-  componentDidMount() {
-    const token = localStorage.getItem('token')
-    fetch('http://localhost:3005/authenticate', {
-      method: 'GET',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Authorization': token
-      }
-    })
-    .then( response => response.json() )
-    .then( data => this.loginUser(data.currentUser) )
-
-  }
+  // componentDidMount() {
+  //   const token = localStorage.getItem('token')
+  //   fetch('http://localhost:3005/authenticate', {
+  //     method: 'GET',
+  //     headers: {
+  //       'Accept': 'application/json',
+  //       'Content-Type': 'application/json',
+  //       'Authorization': token
+  //     }
+  //   })
+  //   .then( response => response.json() )
+  //   .then( data => this.loginUser(data.currentUser) )
+  // }
 
   render () {
     console.log(this.state)
@@ -48,7 +47,7 @@ class App extends React.Component {
           <Route 
             exact path='/profile' 
             component={() =>
-              <Profile currentUser={this.state.currentUser} />
+              <Profile />
             } />
           <Route exact path='/login' component={Login} />
           <Route
